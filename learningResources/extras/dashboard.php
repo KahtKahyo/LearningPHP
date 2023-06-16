@@ -7,7 +7,7 @@
         echo '<a href="logout.php">Logout</a>';
     } else {
         echo 'You are not logged in';
-        echo '<a href="/learningResources/13_sessions.php"></a>HomeS';
+        echo '<a href="/learningResources/13_sessions.php">Home</a>';
     }
 
 ?>

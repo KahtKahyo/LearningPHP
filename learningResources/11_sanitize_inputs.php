@@ -2,11 +2,21 @@
 
 // if is set to post and the value set to submit
 if(isset($_POST['submit'])){
-    echo $_POST['name'];
-    echo $_POST['age'];
+    // safe way to get the value through POST
+    // $name = htmlspecialchars($_POST['name']);
+    // $age = htmlspecialchars($_POST['age']);
+    // OR
+    // $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
+    // $age = filter_input(INPUT_POST, 'age', FILTER_SANITIZE_SPECIAL_CHARS);
+    // OR
+    $name = filter_var($_POST['name'], FILTER_SANITIZE_SPECIAL_CHARS);
+    $age = filter_var($_POST['age'], FILTER_SANITIZE_SPECIAL_CHARS);
+    
+    echo $name;
+    echo $age;
 }
 
-// get data through url 
+// get data through url using GET
 echo $_GET['name']; 
 echo $_GET['age'];
 ?>
