@@ -14,3 +14,4 @@ if(file_exists($file)) {
 
     fclose($handle);
 }
+

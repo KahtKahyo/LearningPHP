@@ -49,3 +49,5 @@ class employee extends User {
 $employee_one = new employee('Sara', '123@gmail.com', '23342341sdf', 'Manager');
 
 echo $employee_one->get_title();
+
+

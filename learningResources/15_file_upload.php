@@ -1,6 +1,8 @@
 <?php 
-    if(isset($_POST['submit']) {
+    if(isset($_POST['submit'])) {
         if(!empty($_FILES['upload']['name'])) {
+            $allowed_ext = array('jpg', 'jpeg', 'png');
+
             // print_r($_FILES);
             if(!empty($_FILES['upload']['name'])) {
                 $file_name = $_FILES['upload']['name'];
@@ -8,6 +10,22 @@
                 $file_tmp = $_FILES['upload']['tmp_name'];
                 $file_type = $_FILES['upload']['type'];
                 $target_dir = "uploads/${file_name}"; 
+
+                // Get file extension
+                $file_ext = explode('.', $file_name);
+                $file_ext = strtolower(end($file_ext));
+
+                // validate file extension
+                if(in_array($file_ext, $allowed_ext)){
+                    if($file_size <= 1000000){
+                        move_uploaded_file($file_tmp, $target_dir);
+                        $message = "File uploaded successfully";
+                    } else {
+                        $message = "Sorry, your file is too large";
+                    }
+                } else {
+                    $message = "Invalid file extension";
+                }
             }
           
             
